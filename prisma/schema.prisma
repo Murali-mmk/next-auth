@@ -93,21 +93,21 @@ model Appointment {
 
 
 
-model Permission {
-  id     String @id @default(uuid())
-  action String // create, read, update, delete
-  resource String // appointment, claim, document
+// model Permission {
+//   id     String @id @default(uuid())
+//   action String // create, read, update, delete
+//   resource String // appointment, claim, document
 
-  roles RolePermission[]
-}
+//   roles RolePermission[]
+// }
 
-model RolePermission {
-  id           String @id @default(uuid())
-  roleId       String
-  permissionId String
+// model RolePermission {
+//   id           String @id @default(uuid())
+//   roleId       String
+//   permissionId String
 
-  role        Role        @relation(fields: [roleId], references: [id])
-  permission  Permission  @relation(fields: [permissionId], references: [id])
+//   role        Role        @relation(fields: [roleId], references: [id])
+//   permission  Permission  @relation(fields: [permissionId], references: [id])
 
-  @@unique([roleId, permissionId])
-}
+//   @@unique([roleId, permissionId])
+// }
