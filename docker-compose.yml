@@ -10,7 +10,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
   nextjs:
-    image: ghcr.io//murali-mmk/next-auth:latest
+    image: ghcr.io/murali-mmk/next-auth:latest
     restart: always
     env_file:
       - .env.production
