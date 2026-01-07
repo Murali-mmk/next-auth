@@ -2,11 +2,16 @@
 
 import { useEffect, useState } from "react";
 
+interface AppointmentEditModalProps {
+  appointmentId: string;
+  onClose: () => void;
+  onSuccess: () => void;
+}
 export default function AppointmentEditModal({
   appointmentId,
   onClose,
   onSuccess,
-}) {
+}: AppointmentEditModalProps) {
   const [form, setForm] = useState({
     title: "",
     description: "",
@@ -31,7 +36,7 @@ export default function AppointmentEditModal({
     fetchAppointment();
   }, [appointmentId]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     await fetch(`/api/appointments/${appointmentId}`, {

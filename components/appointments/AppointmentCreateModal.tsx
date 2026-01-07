@@ -2,14 +2,22 @@
 
 import { useState } from "react";
 
-export default function AppointmentCreateModal({ onClose, onSuccess }) {
+interface AppointmentCreateModalProps {
+  onClose: () => void;
+  onSuccess: () => void;
+}
+
+export default function AppointmentCreateModal({
+  onClose,
+  onSuccess,
+}: AppointmentCreateModalProps) {
   const [form, setForm] = useState({
     title: "",
     description: "",
     scheduledAt: "",
   });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     await fetch("/api/appointments", {

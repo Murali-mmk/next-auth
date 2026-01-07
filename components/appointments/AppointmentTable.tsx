@@ -3,7 +3,24 @@
 import { useState } from "react";
 import AppointmentEditModal from "./AppointmentEditModal";
 
-export default function AppointmentTable({ appointments, onRefresh }) {
+
+interface Appointment {
+  id: string;
+  title: string;
+  description?: string | null;
+  scheduledAt: string;
+  createdAt?: string;
+}
+
+interface AppointmentTableProps {
+  appointments: Appointment[];
+  onRefresh: () => void | Promise<void>;
+}
+
+export default function AppointmentTable({
+  appointments,
+  onRefresh,
+}: AppointmentTableProps) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
   const handleDelete = async (id: string) => {

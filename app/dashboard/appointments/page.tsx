@@ -16,9 +16,27 @@ export default function AppointmentsPage() {
     setAppointments(data.appointments || []);
   };
 
-  useEffect(() => {
-    fetchAppointments();
-  }, []);
+useEffect(() => {
+  let isMounted = true;
+
+  const load = async () => {
+    const res = await fetch("/api/appointments", {
+      credentials: "include",
+    });
+
+    const data = await res.json();
+
+    if (isMounted) {
+      setAppointments(data.appointments || []);
+    }
+  };
+
+  load();
+
+  return () => {
+    isMounted = false;
+  };
+}, []);
 
   return (
      <div className="p-6">
