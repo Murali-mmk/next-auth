@@ -1,0 +1,23 @@
+services:
+  postgres:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_DB: nextjsdb
+      POSTGRES_USER: nextjsuser
+      POSTGRES_PASSWORD: nextjspassword
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  nextjs:
+    image: ghcr.io/Murali-mmk/next-auth-app:latest
+    restart: always
+    env_file:
+      - .env.production
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
