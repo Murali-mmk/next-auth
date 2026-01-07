@@ -35,9 +35,9 @@ export function proxy(request: NextRequest) {
   // ❌ Not authenticated → redirect
   if (!sessionToken) {
     const loginUrl = new URL("/login", request.url);
-    loginUrl.searchParams.set("from", pathname); // optional redirect-back
+    loginUrl.searchParams.set("from", pathname); // optional redirect
     return NextResponse.redirect(loginUrl);
   }
 
-  return NextResponse.next();
+  return NextResponse.next(); 
 }

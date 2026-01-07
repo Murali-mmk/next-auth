@@ -10,7 +10,7 @@ datasource db {
 
 model Role {
   id    String @id @default(uuid())
-  name  String @unique
+  name  String @unique 
   users User[]
 }
 
