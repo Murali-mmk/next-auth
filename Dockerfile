@@ -1,5 +1,5 @@
 # ---------- Base ----------
-FROM node:20-alpine AS base
+FROM node:20-bullseye AS base
 WORKDIR /app
 
 # ---------- Dependencies ----------
@@ -17,7 +17,7 @@ RUN npx prisma generate --schema=prisma/schema.prisma
 RUN npm run build
 
 # ---------- Runner ----------
-FROM node:20-alpine AS runner
+FROM node:20-bullseye AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
