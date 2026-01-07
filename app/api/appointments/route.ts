@@ -6,7 +6,6 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   const session = await getServerSession(authOptions);
-  console.log("9999999999999999999999", session.token)
 
   if (!session || !session.user?.id) {
     return NextResponse.json(
