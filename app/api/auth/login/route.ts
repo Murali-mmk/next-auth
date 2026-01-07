@@ -74,27 +74,27 @@ export async function POST(req: Request) {
       { status: 500 }
     );
   }
-// }
-import { NextResponse } from "next/server";
-import { signIn } from "next-auth/react";
-
-export async function POST(req: Request) {
-  const { email, password } = await req.json();
-
-  const result = await signIn("credentials", {
-    email,
-    password,
-    redirect: false,
-  });
-
-  if (result?.error) {
-    return NextResponse.json(
-      { error: "Invalid credentials" },
-      { status: 401 }
-    );
-  }
-
-  return NextResponse.json({
-    message: "Login successful",
-  });
 }
+// import { NextResponse } from "next/server";
+// import { signIn } from "next-auth/react";
+
+// export async function POST(req: Request) {
+//   const { email, password } = await req.json();
+
+//   const result = await signIn("credentials", {
+//     email,
+//     password,
+//     redirect: false,
+//   });
+
+//   if (result?.error) {
+//     return NextResponse.json(
+//       { error: "Invalid credentials" },
+//       { status: 401 }
+//     );
+//   }
+
+//   return NextResponse.json({
+//     message: "Login successful",
+//   });
+// }
